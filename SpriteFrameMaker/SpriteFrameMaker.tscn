@@ -1,0 +1,190 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://git/SpriteFrameMaker/SpriteFrameMaker.gd" type="Script" id=1]
+[ext_resource path="res://git/SpriteFrameMaker/Preview.gd" type="Script" id=3]
+
+[node name="SpriteFrameMaker" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+margin_right = 624.0
+margin_bottom = 4.0
+
+[node name="Preview" type="ViewportContainer" parent="VBoxContainer"]
+margin_top = 8.0
+margin_right = 624.0
+margin_bottom = 436.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+script = ExtResource( 3 )
+
+[node name="Viewport" type="Viewport" parent="VBoxContainer/Preview"]
+size = Vector2( 624, 428 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="PreviewSprite" type="AnimatedSprite" parent="VBoxContainer/Preview/Viewport"]
+position = Vector2( 312, 214 )
+scale = Vector2( 4, 4 )
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+margin_top = 440.0
+margin_right = 624.0
+margin_bottom = 444.0
+
+[node name="PreviewButtons" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 448.0
+margin_right = 624.0
+margin_bottom = 488.0
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/PreviewButtons"]
+margin_right = 4.0
+margin_bottom = 40.0
+
+[node name="MovementButton" type="CheckButton" parent="VBoxContainer/PreviewButtons"]
+margin_left = 8.0
+margin_right = 150.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+text = "WALKING"
+align = 1
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/PreviewButtons"]
+margin_left = 154.0
+margin_right = 158.0
+margin_bottom = 40.0
+
+[node name="UpButton" type="Button" parent="VBoxContainer/PreviewButtons"]
+margin_left = 162.0
+margin_right = 266.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+text = "UP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator3" type="VSeparator" parent="VBoxContainer/PreviewButtons"]
+margin_left = 270.0
+margin_right = 274.0
+margin_bottom = 40.0
+
+[node name="RightButton" type="Button" parent="VBoxContainer/PreviewButtons"]
+margin_left = 278.0
+margin_right = 383.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+text = "RIGHT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator4" type="VSeparator" parent="VBoxContainer/PreviewButtons"]
+margin_left = 387.0
+margin_right = 391.0
+margin_bottom = 40.0
+
+[node name="DownButton" type="Button" parent="VBoxContainer/PreviewButtons"]
+margin_left = 395.0
+margin_right = 499.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+text = "DOWN"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator5" type="VSeparator" parent="VBoxContainer/PreviewButtons"]
+margin_left = 503.0
+margin_right = 507.0
+margin_bottom = 40.0
+
+[node name="LeftButton" type="Button" parent="VBoxContainer/PreviewButtons"]
+margin_left = 511.0
+margin_right = 616.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+text = "LEFT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator6" type="VSeparator" parent="VBoxContainer/PreviewButtons"]
+margin_left = 620.0
+margin_right = 624.0
+margin_bottom = 40.0
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+margin_top = 492.0
+margin_right = 624.0
+margin_bottom = 496.0
+
+[node name="LoadButton" type="Button" parent="VBoxContainer"]
+margin_top = 500.0
+margin_right = 624.0
+margin_bottom = 520.0
+text = "LOAD SPRITE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator4" type="HSeparator" parent="VBoxContainer"]
+margin_top = 524.0
+margin_right = 624.0
+margin_bottom = 528.0
+
+[node name="SaveButton" type="Button" parent="VBoxContainer"]
+margin_top = 532.0
+margin_right = 624.0
+margin_bottom = 552.0
+disabled = true
+text = "SAVE SPRITE FRAME"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator5" type="HSeparator" parent="VBoxContainer"]
+margin_top = 556.0
+margin_right = 624.0
+margin_bottom = 560.0
+
+[node name="FileDialog" type="FileDialog" parent="."]
+margin_right = 364.0
+margin_bottom = 130.0
+window_title = "Salva un file"
+
+[connection signal="size_changed" from="VBoxContainer/Preview/Viewport" to="VBoxContainer/Preview" method="_on_Viewport_size_changed"]
+[connection signal="toggled" from="VBoxContainer/PreviewButtons/MovementButton" to="." method="_on_MovementButton_toggled"]
+[connection signal="button_down" from="VBoxContainer/PreviewButtons/UpButton" to="." method="_on_UpButton_button_down"]
+[connection signal="button_down" from="VBoxContainer/PreviewButtons/RightButton" to="." method="_on_RightButton_button_down"]
+[connection signal="button_down" from="VBoxContainer/PreviewButtons/DownButton" to="." method="_on_DownButton_button_down"]
+[connection signal="button_down" from="VBoxContainer/PreviewButtons/LeftButton" to="." method="_on_LeftButton_button_down"]
+[connection signal="button_down" from="VBoxContainer/LoadButton" to="." method="_on_LoadButton_button_down"]
+[connection signal="button_down" from="VBoxContainer/SaveButton" to="." method="_on_SaveButton_button_down"]
